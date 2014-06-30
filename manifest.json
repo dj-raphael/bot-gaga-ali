@@ -1,0 +1,47 @@
+{
+    "manifest_version": 2,
+    "name": "Aliexpress  GAGA helper", // Название расширения
+    "version": "1.0", // Номер версии
+    "description": "Aliexpress  GAGA helper", // Описание расширения
+
+    "permissions": [
+        "tabs", // Разрешить расширению работать с вкладками
+        "http://gaga.aliexpress.com/*", //Разрешить расширению обращаться к указанному адресу
+        "http://escrow.alibaba.com/*",
+        "https://login.aliexpress.com/*",
+        "https://login.alibaba.com/*"
+    ],
+
+    "background": {
+        "scripts": ["background.js"]
+    },
+
+    "content_scripts": [
+    {
+        "matches": [
+            "http://gaga.aliexpress.com/*",
+            "http://escrow.alibaba.com/*",
+            "https://login.aliexpress.com/*",
+            "https://login.alibaba.com/*"
+        ],
+        "js": [
+            "jquery.min.js",
+            "content.js"
+        ],
+        "run_at": "document_end"
+    }
+    ],
+
+    "browser_action": { // Элементы браузера
+        "default_title": "GAGA", // Название кнопки
+        "default_icon": "images/aliexpress.ico", // Иконка для кнопки
+        "popup": "popup.html" // Всплывающее окно
+    },
+
+    "web_accessible_resources": [
+        "jquery.min.js",
+        "main.js"
+    ],
+
+    "options_page": "options.html" // Страница настроек
+}
